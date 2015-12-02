@@ -9,8 +9,15 @@ use iutbay\yii2kcfinder\KCFinderInputWidget;
  */
 class Kcfinder extends KCFinderInputWidget{
 	
-	public $kcfDefaultOptions = [
-        'disabled'=>false,
+	public $buttonLabel = 'Добавить';
+	
+	//public $iframe = false;
+	
+	public $multiple = false;
+
+	public $kcfOptions = [
+		'uploadDir' => '',
+		'disabled'=>false,
         'denyZipDownload' => true,
         'denyUpdateCheck' => true,
         'denyExtensionRename' => true,
@@ -39,7 +46,7 @@ class Kcfinder extends KCFinderInputWidget{
         ],
         'thumbsDir' => '.thumbs',
         'thumbWidth' => 100,
-        'thumbHeight' => 100,
-    ];
-	
+        'thumbHeight' => 100
+	];
+
 }

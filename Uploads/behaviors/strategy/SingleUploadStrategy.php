@@ -25,7 +25,7 @@ class SingleUploadStrategy extends UploadStrategy {
 	{
 		foreach ($fields as $field) {
 			$file = $this->behavior->owner->{$field};
-
+			
 			if ($file instanceof UploadedFile && !in_array($field, $this->notChangedFields)) {
 				$file->save();
 				$this->toUpdate[$field] = (string) $file;
@@ -115,8 +115,9 @@ class SingleUploadStrategy extends UploadStrategy {
 
 	protected function isFieldChanged($field)
 	{
-		$newField = $this->behavior->owner->{$field};
+		$newField = $this->behavior->getFieldFromStorage($field);
 		$oldField = $this->behavior->owner->getOldAttribute($field);
+		
 		return (string) $newField !== (string) $oldField;
 	}
 

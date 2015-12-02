@@ -90,6 +90,7 @@ class UploadBehaviour extends Behavior {
 
 	public function saveFields()
 	{
+
 		$this->loadStoragedAttributesToOwner();
 		$this->uploadStrategy->saveFields($this->fields);
 		return $this;
@@ -110,6 +111,11 @@ class UploadBehaviour extends Behavior {
 			$this->uploadStrategy->deleteField($field);
 		}
 		return $this;
+	}
+
+	public function getFieldFromStorage($fieldName)
+	{
+		return $this->fieldsToUploadStorage[$fieldName];
 	}
 
 	public function handleBeforeInsert()
