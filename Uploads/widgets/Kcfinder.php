@@ -1,6 +1,8 @@
 <?php
 
 namespace Uploads\widgets;
+
+use yii;
 use iutbay\yii2kcfinder\KCFinderInputWidget;
 /**
  * Description of Kcfinder
@@ -14,10 +16,11 @@ class Kcfinder extends KCFinderInputWidget{
 	//public $iframe = false;
 	
 	public $multiple = false;
+	
 
 	public $kcfOptions = [
 		'uploadDir' => '',
-		'disabled'=>false,
+		'disabled'=> false,
         'denyZipDownload' => true,
         'denyUpdateCheck' => true,
         'denyExtensionRename' => true,
@@ -48,5 +51,11 @@ class Kcfinder extends KCFinderInputWidget{
         'thumbWidth' => 100,
         'thumbHeight' => 100
 	];
+	
+	public function init(){
+
+		$this->kcfOptions['disabled'] = !yii::$app->getUser()->can('upload/files');
+		parent::init();
+	}
 
 }
