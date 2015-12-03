@@ -22,7 +22,7 @@ class m151130_081732_create_uploads_table extends Migration
 				'collection_id' => 'INT(11) NOT NULL',
 			]);
 			
-			$this->addForeignKey('uploads_collection_uploads_FK', 'uploads', 'collection_id', 'uploads_collection', 'id', 'DELETE', 'RESTRICT');
+			$this->addForeignKey('uploads_collection_uploads_FK', 'uploads', 'collection_id', 'uploads_collection', 'id', 'CASCADE', 'RESTRICT');
 			
 			
 		}catch(\Exception $e){

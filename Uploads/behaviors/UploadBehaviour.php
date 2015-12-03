@@ -65,6 +65,7 @@ class UploadBehaviour extends Behavior {
 	 */
 	public function prepareToValidation()
 	{
+		
 		$this->hydrateUploadedFilesBeforeValidation();
 		$this->addValidatorToOwner();
 	}
