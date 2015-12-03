@@ -20,8 +20,12 @@ class FileCollectionWidget extends InputWidget{
 	
 	public function run()
     {
-		$uploads = $this->model->{$this->attribute}->getUploads();
-		return $this->renderFile( __DIR__ . '/views/file_collection_widget.php', ['uploads' => $uploads]);
+		$collection = $this->model->{$this->attribute};
+		
+		if($collection instanceof \Uploads\models\UploadsCollection){
+			$uploads = $collection->getUploads();
+			return $this->renderFile( __DIR__ . '/views/file_collection_widget.php', ['uploads' => $uploads]);
+		}
     }
 	
 }
